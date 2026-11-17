@@ -115,6 +115,6 @@ class HomeController extends Controller
         return view('pages.home', compact('heroSlides', 'about', 'stats', 'services', 'testimonials', 'previewItems', 'clientRows', 'pageSettings', 'processSteps', 'socialLinks', 'latestPortfolio', 'latestBlog', 'teamMembers'));
     }
 
-    public function about()   { return view('pages.about'); }
-    public function services() { return view('pages.services'); }
+    public function about()   { return redirect('/#about'); }
+    public function services() { return redirect('/#services'); }
 }

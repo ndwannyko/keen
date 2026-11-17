@@ -1,4 +1,10 @@
 /.phpunit.cache
+/bootstrap/cache/config.php
+/bootstrap/cache/events.php
+/bootstrap/cache/packages.php
+/bootstrap/cache/routes-v7.php
+/bootstrap/cache/services.php
+/database/database.sqlite
 /node_modules
 /public/build
 /public/hot

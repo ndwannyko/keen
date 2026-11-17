@@ -79,6 +79,29 @@ Open **http://localhost:8000**
 
 ---
 
+## ☁️ Deploy to Render
+
+This repo includes a `render.yaml` Blueprint and a production `Dockerfile`. Render provisions a managed PostgreSQL database and a Docker web service automatically.
+
+1. Push the project to GitHub or GitLab.
+2. In Render, select **New → Blueprint** and choose that repository.
+3. Name the Blueprint and deploy. Render creates the `keenkings-media` web service and the `keenkings-db` Postgres database, generates `APP_KEY`, and wires up all database variables from `render.yaml`.
+4. The container entrypoint runs migrations on every start; the Blueprint's `initialDeployHook` seeds the default content once after the first successful deploy.
+
+The live URL is shown in the Render dashboard (typically `https://keenkings-media.onrender.com`). Log in at `/admin` with the default credentials above and change the password immediately.
+
+Useful commands from the Render Shell:
+
+```bash
+php artisan db:seed --force
+php artisan storage:link
+php artisan config:clear
+```
+
+Uploaded media uses the local `storage/app/public` disk. For uploads that survive redeploys, set `MEDIA_DISK=r2` and provide the `CLOUDFLARE_R2_*` variables in the service environment.
+
+---
+
 ## 🔐 Admin Panel
 
 **URL:** http://localhost:8000/admin

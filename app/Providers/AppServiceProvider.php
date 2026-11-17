@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
             URL::forceScheme('https');
         }
 
-        // Auto-run pending migrations on Railway (releaseCommand not reliably firing)
+        // Safety net: auto-run pending migrations on the first web request in production
         if (config('app.env') === 'production' && !app()->runningInConsole()) {
             $this->runPendingMigrations();
         }
